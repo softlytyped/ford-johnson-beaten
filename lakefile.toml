@@ -1,0 +1,7 @@
+name = "ford-johnson-beaten"
+version = "0.1.0"
+defaultTargets = ["FordJohnson"]
+
+[[lean_lib]]
+name = "FordJohnson"
+precompileModules = true

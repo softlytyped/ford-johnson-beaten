@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Please cite this repository together with the accompanying paper."
+type: software
+title: "The Ford–Johnson algorithm, no longer unbeaten for less than 47 elements"
+abstract: >-
+  Paper, complete comparison trees, and Lean 4 formalisation proving that
+  26 elements can be sorted in at most 90 comparisons and 46 elements in
+  at most 194 comparisons. The one-comparison saving over Ford–Johnson
+  extends throughout 26–32 and 46–64 elements. The code, scripts, and
+  certificate data are licensed under Apache 2.0; the paper (note.tex and
+  note.pdf) is licensed under CC BY 4.0.
+authors:
+  - family-names: "Sager"
+    given-names: "H. G."
+    orcid: "https://orcid.org/0009-0009-3916-9042"
+version: 0.1.0
+license: Apache-2.0

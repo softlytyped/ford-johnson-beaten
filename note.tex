@@ -1,0 +1,122 @@
+\documentclass[final,3p,times]{elsarticle}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\setlength{\bibsep}{0pt}
+\biboptions{sort&compress}
+\geometry{textheight=712pt,headheight=12pt}
+\emergencystretch=1.5em
+
+\newtheorem*{theorem}{Theorem}
+\journal{Information Processing Letters}
+\myfooter[L]{Intended for publication in Information Processing Letters\hfill\today}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{The Ford--Johnson algorithm, no longer unbeaten\\ for less than 47 elements}
+
+\author{H. G. Sager}
+\ead{hazim.g.sager@gmail.com}
+\address{Independent researcher}
+
+\begin{abstract}
+It is shown that 26 elements can be sorted with 90 comparisons, one fewer than merge
+insertion requires.
+\end{abstract}
+
+\begin{keyword}
+Analysis of algorithms \sep Sorting \sep Merge insertion \sep Formal verification
+\end{keyword}
+
+\end{frontmatter}
+
+In 2007 Peczarski~\cite{Pec07} found the algorithm of Ford and Johnson~\cite{FJ59}
+`still unbeaten for less than 47 elements'. We show that it no longer is.
+
+Let $S(n)$ denote the least number of comparisons sufficient to sort $n$ distinct
+elements. The algorithm of Ford and Johnson, now usually called merge insertion, sorts $n$
+elements with at most
+\[
+  F(n) = \sum_{k=1}^{n} \Bigl\lceil \log_2 \frac{3k}{4} \Bigr\rceil
+\]
+comparisons~\cite{Knuth98}, and it is known that $S(n) = F(n)$ for every $n \le
+22$~\cite{Knuth98,Pec04,Pec07,SW23}. Manacher~\cite{Man79} proved that $S(n) < F(n)$ for
+infinitely many $n$; the least such $n$ previously known was 47, by a result of Schulte
+M\"onting~\cite{SM81}.
+
+\begin{theorem}
+$S(26) \le 90$ and $S(46) \le 194$, whereas $F(26) = 91$ and $F(46) = 195$. More
+generally, $S(n) < F(n)$ whenever $26 \le n \le 32$ or $46 \le n \le 64$.
+\end{theorem}
+
+\begin{proof}
+We sort 21 of the 26 elements by merge insertion, which requires $F(21) = 66$
+comparisons. The remaining five have not yet been compared with anything, and they may be
+inserted into the ordered chain of 21 by means of a decision tree $T_{21,5}$ of depth 24,
+given in~\cite{data}. This makes 90 comparisons in all. In the same way, 42 of 46 elements
+may be sorted with $F(42) = 171$ comparisons and the remaining four inserted by a tree
+$T_{42,4}$ of depth 23, which makes 194. Finally, a further element may be added by binary
+insertion at a cost of five comparisons so long as there are fewer than 32 elements, and of
+six so long as there are fewer than 64; these are exactly the increments of $F$ in the two
+ranges, so that the inequality persists.
+\end{proof}
+
+Inserting the new elements one at a time by binary insertion would take 25 and 24
+comparisons, and the information-theoretic lower bounds are 23 and 22; every leaf of either
+tree is reached by exactly one input. Since $26! > 2^{88}$, at least 89 comparisons are
+necessary, so $S(26)$ is either 89 or 90. For 47 elements the argument gives 200, the bound
+of Schulte M\"onting. The proof has been formalised in Lean~4~\cite{Lean4}, using
+\texttt{native\_decide} to check the trees because of their size; the formalisation and the
+trees are available at~\cite{data}. They were found by computer search, the specific
+technique of which may be described elsewhere.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript
+preparation process}
+During the preparation of this work the author used Claude Opus 5.5 (Anthropic) in order to
+assist in writing up this note. After using this tool, the author reviewed and edited the
+content as needed and takes full responsibility for the content of the publication.
+
+\begin{thebibliography}{10}
+\footnotesize
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+
+\bibitem{Pec07}
+M. Peczarski, The Ford--Johnson algorithm still unbeaten for less than 47 elements,
+Inform. Process. Lett. 101 (2007) 126--128.
+
+\bibitem{FJ59}
+L.R. Ford Jr., S.M. Johnson, A tournament problem, Amer. Math. Monthly 66 (1959) 387--389.
+
+\bibitem{Knuth98}
+D.E. Knuth, The Art of Computer Programming, Vol.~3: Sorting and Searching, 2nd ed.,
+Addison-Wesley, 1998, Section 5.3.1.
+
+\bibitem{Pec04}
+M. Peczarski, New results in minimum-comparison sorting, Algorithmica 40 (2004) 133--145.
+
+\bibitem{SW23}
+F. Stober, A. Wei{\ss}, Lower bounds for sorting 16, 17, and 18 elements, in: Proc.
+Symposium on Algorithm Engineering and Experiments (ALENEX), SIAM, 2023.
+arXiv:2206.05597.
+
+\bibitem{Man79}
+G.K. Manacher, The Ford--Johnson sorting algorithm is not optimal, J. ACM 26 (1979)
+441--456.
+
+\bibitem{SM81}
+J. Schulte M\"onting, Merging of 4 or 5 elements with $n$ elements, Theoret. Comput. Sci.
+14 (1981) 19--37.
+
+\bibitem{data}
+H.G. Sager, The Ford--Johnson algorithm, no longer unbeaten for less than 47 elements,
+\url{https://github.com/softlytyped/ford-johnson-beaten}, 2026.
+
+\bibitem{Lean4}
+L. de Moura, S. Ullrich, The Lean 4 theorem prover and programming language, in: Automated
+Deduction -- CADE 28, LNCS 12699, Springer, 2021, pp. 625--635.
+
+\end{thebibliography}
+
+\end{document}
