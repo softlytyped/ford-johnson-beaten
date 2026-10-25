@@ -56,7 +56,9 @@ encoding comparisons as the two ASCII characters `65 + x`, `65 + y`.
 The archives and their hashes are in [`Data`](FordJohnson/Data).
 The generated `T21.lean` and `T42.lean` files are excluded from Git.
 
-Citation information is in [`CITATION.cff`](CITATION.cff).
+Citation information is in [`CITATION.cff`](CITATION.cff). The repository is
+archived on Zenodo at
+[doi:10.5281/zenodo.23645923](https://doi.org/10.5281/zenodo.23645923).
 
 ## Licence
 
