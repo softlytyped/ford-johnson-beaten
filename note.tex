@@ -57,10 +57,10 @@ comparisons. The remaining five have not yet been compared with anything, and th
 inserted into the ordered chain of 21 by means of a decision tree $T_{21,5}$ of depth 24,
 given in~\cite{data}. This makes 90 comparisons in all. In the same way, 42 of 46 elements
 may be sorted with $F(42) = 171$ comparisons and the remaining four inserted by a tree
-$T_{42,4}$ of depth 23, which makes 194. Finally, a further element may be added by binary
-insertion at a cost of five comparisons so long as there are fewer than 32 elements, and of
-six so long as there are fewer than 64; these are exactly the increments of $F$ in the two
-ranges, so that the inequality persists.
+$T_{42,4}$ of depth 23, which makes 194. Finally, binary insertion gives $S(n+1) \le S(n) + \lceil \log_2 (n+1) \rceil$, and for
+$26 \le n < 32$ and $46 \le n < 64$ this increment, five and six respectively, equals
+$F(n+1) - F(n)$. Hence $S(n) \le F(n) - 1$ implies $S(n+1) \le F(n+1) - 1$, and the
+improvement extends to 32 and 64 elements.
 \end{proof}
 
 Inserting the new elements one at a time by binary insertion would take 25 and 24
@@ -111,7 +111,7 @@ J. Schulte M\"onting, Merging of 4 or 5 elements with $n$ elements, Theoret. Com
 
 \bibitem{data}
 H.G. Sager, The Ford--Johnson algorithm, no longer unbeaten for less than 47 elements,
-v0.1.0, Zenodo, 2026, \url{https://doi.org/10.5281/zenodo.23645924}, source at
+v0.1.1, Zenodo, 2026, \url{https://doi.org/10.5281/zenodo.23663357}, source at
 \url{https://github.com/softlytyped/ford-johnson-beaten}.
 
 \bibitem{Lean4}
