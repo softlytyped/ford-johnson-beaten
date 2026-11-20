@@ -1,8 +1,10 @@
 # The Ford–Johnson algorithm, no longer unbeaten for less than 47 elements
 
-Lean 4 formalisation of H. G. Sager's
-*[The Ford–Johnson algorithm, no longer unbeaten for less than 47 elements](note.pdf)*
-([LaTeX source](note.tex)).
+Mila Sager, also known as Hazim Sager, published this work under the name H. G. Sager.
+[Read the Ford–Johnson paper on alphaXiv](https://www.alphaxiv.org/abs/2611.ford-johnson-sorting-comparisons).
+
+This repository contains the Lean 4 formalisation, the [paper (PDF)](note.pdf),
+and the [LaTeX source](note.tex).
 
 | Elements | Proved sorting bound | Ford–Johnson count |
 | ---: | ---: | ---: |
